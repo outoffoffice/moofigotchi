@@ -1,0 +1,12 @@
+# Build
+.build/
+__pycache__/
+*.lock
+
+# macOS
+.DS_Store
+
+# nur lokal
+ref/
+versions/
+moofigotchi.py

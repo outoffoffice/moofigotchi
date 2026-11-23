@@ -1,0 +1,17 @@
+#!/bin/sh
+# Startet Moofigotchi als kleines macOS-Fenster (baut es beim ersten Mal).
+DIR="$(cd "$(dirname "$0")" && pwd)"
+SRC="$DIR/Moofigotchi.swift"
+BIN="$DIR/.build/Moofigotchi"
+
+if [ ! -x "$BIN" ] || [ "$SRC" -nt "$BIN" ]; then
+  echo "moof… baue moofigotchi"
+  mkdir -p "$DIR/.build"
+  swiftc -O -swift-version 5 "$SRC" -o "$BIN" || exit 1
+fi
+
+if [ "$1" = "--reset" ]; then rm -f "$HOME/.moofigotchi.json"; shift; echo "neues moof wird geboren…"; fi
+if [ "$1" = "--fg" ]; then shift; exec "$BIN" "$@"; fi
+
+nohup "$BIN" "$@" >/dev/null 2>&1 &
+echo "moof."
