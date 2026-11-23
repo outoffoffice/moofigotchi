@@ -53,3 +53,7 @@ goes into the printer house.
 **Power**: press the button on the right side of the case to switch off.
 
 The save file lives in `~/.moofigotchi.json`. Time keeps passing while Moof is closed.
+
+## License
+
+MIT – see [LICENSE](LICENSE).
